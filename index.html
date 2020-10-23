@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html style="background: black">
 <body>
-<img src="https://github.com/z3r0-7320/z3r0-7320.github.io/blob/master/z3r0_.png" style="position: absolute; margin: auto; top: 0px; left: 0px; right: 0px; bottom: 0px;">
+<p id="text" style="font-family: sans-serif; color: white; font-size: 75px; text-align: center">
 </body>
+<script>
+
+    var a = document.getElementById('text')
+    loop()
+    function loop() {
+        var date = new Date()
+        a.innerHTML = `${("0" + date.getDate()).slice(-2)}.${("0" + (date.getMonth() + 1)).slice(-2)}.${date.getFullYear()} ${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}:${("0" + date.getSeconds()).slice(-2)}`
+        setTimeout(loop, 500);
+    };
+</script>
 </html>
 
