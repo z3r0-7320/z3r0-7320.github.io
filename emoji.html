@@ -214,7 +214,7 @@
         for (var a of mapOrig) {
           var myRegexp = /<img src=\S* id="(\S*)"/g
           var match = myRegexp.exec(a);
-          if (match[1].includes(e.value.trim())) {
+          if (match[1].includes(e.valuetoLowerCase().trim())) {
             console.log(match[1] + " " + a[0] + " " + a[1])
             map.set(i.toString(), a[1])
             i++
