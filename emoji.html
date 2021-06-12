@@ -148,8 +148,6 @@
       loadJSON(function (response) {
         actual_JSON = JSON.parse(response);
         mapOrig = new Map(Object.entries(actual_JSON.map));
-        console.log(mapOrig)
-        console.log(Math.ceil(mapOrig.size / elementssite))
         map = mapOrig
         renderPage()
       });
@@ -197,11 +195,9 @@
 
     function renderPageInput(r) {
       if (!Number.isNaN(parseInt(r.value))) {
-        console.log('hi')
         page = parseInt(r.value) - 1;
         renderPage()
       } else if (r.value !== '') {
-        console.log('why')
         r.value = page + 1
       }
     }
@@ -210,19 +206,16 @@
       if (e.value.trim() !== '') {
         map = new Map()
         var i = 0
-        console.log(e.value)
         for (var a of mapOrig) {
           var myRegexp = /<img src=\S* id="(\S*)"/g
           var match = myRegexp.exec(a);
           if (match[1].includes(e.valuetoLowerCase().trim())) {
-            console.log(match[1] + " " + a[0] + " " + a[1])
             map.set(i.toString(), a[1])
             i++
           }
         }
       } else map = mapOrig
 
-      console.log(map)
       page = 0
       renderPage()
     }
