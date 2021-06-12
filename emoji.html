@@ -1,13 +1,15 @@
 <html>
+<link rel="icon" href="z3r0.ico" type="image/x-icon" />
 
 <head>
+  <title>Emoji</title>
   <style>
     html,
     body {
       background-color: rgb(47, 49, 54);
     }
 
-    p.test{
+    p.test {
       margin-top: 0px;
     }
 
@@ -35,7 +37,7 @@
       margin: auto;
     }
 
-    div.gallery img:active{
+    div.gallery img:active {
       filter: grayscale(100%);
     }
 
@@ -44,10 +46,10 @@
     }
 
     input:focus {
-    outline: none;
-}
+      outline: none;
+    }
 
-    div.top{
+    div.top {
       margin-top: 20px;
       text-align: center;
       overflow: hidden;
@@ -62,9 +64,9 @@
       position: relative;
       bottom: 0;
       width: 100%;
-}
+    }
 
-input[type=text].a{
+    input[type=text].a {
       background-color: rgb(32, 34, 37);
       border: none;
       border-radius: 4px;
@@ -79,7 +81,7 @@ input[type=text].a{
       cursor: text;
     }
 
-    input[type=text].b{
+    input[type=text].b {
       margin-left: 10px;
       margin-right: 10px;
       background-color: rgb(32, 34, 37);
@@ -119,111 +121,112 @@ input[type=text].a{
     }
   </style>
 </head>
+
 <body>
   <div class="top"><input class="a" type="text" placeholder="Suchen" oninput="search(this)"></div>
   <p class="test">
   <div class="bottom"><button type="button" onclick="previous()">&lt;</button><input class="b" type="text" id="page"
       oninput="renderPageInput(this)"><button type="button" onclick="next()">&gt;</button></div>
 
-    <script>
-      var pageInput = document.getElementById("page")
-      function loadJSON(callback) {
-        var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-        xobj.open('GET', 'html.json', true);
-        xobj.onreadystatechange = function () {
-          if (xobj.readyState == 4 && xobj.status == "200") {
-            callback(xobj.responseText);
-          }
-        };
-        xobj.send(null);
-      }
-      var actual_JSON
-      var mapOrig = new Map();
-      var map = new Map();
-      function init() {
-        loadJSON(function (response) {
-          actual_JSON = JSON.parse(response);
-          mapOrig = new Map(Object.entries(actual_JSON.map));
-          console.log(mapOrig)
-          console.log(Math.ceil(mapOrig.size / elementssite))
-          map = mapOrig
-          renderPage()
-        });
-      }
-      var elementssite = 100
-      var page = 0
-      var div = document.getElementsByClassName('test')
-      var hi = elementssite;
-
-      init()
-
-      function next() {
-        if (page < Math.ceil(map.size / elementssite) - 1) {
-          page++
-          renderPage()
+  <script>
+    var pageInput = document.getElementById("page")
+    function loadJSON(callback) {
+      var xobj = new XMLHttpRequest();
+      xobj.overrideMimeType("application/json");
+      xobj.open('GET', 'html.json', true);
+      xobj.onreadystatechange = function () {
+        if (xobj.readyState == 4 && xobj.status == "200") {
+          callback(xobj.responseText);
         }
-      }
-
-      function previous() {
-        if (page > 0) {
-          page--
-          renderPage()
-        }
-      }
-
-      function copy(e) {
-        const input = document.createElement('input');
-        input.style.position = 'fixed';
-        input.style.opacity = 0;
-        input.value = e.childNodes[0].childNodes[0].alt;
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand('Copy');
-        document.body.removeChild(input);
       };
+      xobj.send(null);
+    }
+    var actual_JSON
+    var mapOrig = new Map();
+    var map = new Map();
+    function init() {
+      loadJSON(function (response) {
+        actual_JSON = JSON.parse(response);
+        mapOrig = new Map(Object.entries(actual_JSON.map));
+        console.log(mapOrig)
+        console.log(Math.ceil(mapOrig.size / elementssite))
+        map = mapOrig
+        renderPage()
+      });
+    }
+    var elementssite = 100
+    var page = 0
+    var div = document.getElementsByClassName('test')
+    var hi = elementssite;
 
-      function renderPage() {
-        pageInput.value = page + 1
-        var innerhtml = "";
-        for (var i = elementssite * page; i <= Math.min(elementssite * (page + 1) - 1, map.size - 1); i++) {
-          innerhtml += `<div class="gallery" onclick="copy(this)"><p>${map.get(i.toString())}</p></div>`
-        }
-        div[0].innerHTML = innerhtml
+    init()
+
+    function next() {
+      if (page < Math.ceil(map.size / elementssite) - 1) {
+        page++
+        renderPage()
       }
+    }
 
-      function renderPageInput(r) {
-        if (!Number.isNaN(parseInt(r.value))) {
-          console.log('hi')
-          page = parseInt(r.value) - 1;
-          renderPage()
-        } else if (r.value !== '') {
-          console.log('why')
-          r.value = page + 1
-        }
+    function previous() {
+      if (page > 0) {
+        page--
+        renderPage()
       }
+    }
 
-      function search(e){
-        if(e.value.trim() !== ''){
-                  map = new Map()
+    function copy(e) {
+      const input = document.createElement('input');
+      input.style.position = 'fixed';
+      input.style.opacity = 0;
+      input.value = e.childNodes[0].childNodes[0].alt;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('Copy');
+      document.body.removeChild(input);
+    };
+
+    function renderPage() {
+      pageInput.value = page + 1
+      var innerhtml = "";
+      for (var i = elementssite * page; i <= Math.min(elementssite * (page + 1) - 1, map.size - 1); i++) {
+        innerhtml += `<div class="gallery" onclick="copy(this)"><p>${map.get(i.toString())}</p></div>`
+      }
+      div[0].innerHTML = innerhtml
+    }
+
+    function renderPageInput(r) {
+      if (!Number.isNaN(parseInt(r.value))) {
+        console.log('hi')
+        page = parseInt(r.value) - 1;
+        renderPage()
+      } else if (r.value !== '') {
+        console.log('why')
+        r.value = page + 1
+      }
+    }
+
+    function search(e) {
+      if (e.value.trim() !== '') {
+        map = new Map()
         var i = 0
         console.log(e.value)
-        for(var a of mapOrig){
+        for (var a of mapOrig) {
           var myRegexp = /<img src=\S* id="(\S*)"/g
           var match = myRegexp.exec(a);
-         if(match[1].includes(e.value.trim())) {
-           console.log(match[1] + " " + a[0] + " " + a[1])
-           map.set(i.toString(), a[1])
-           i++
+          if (match[1].includes(e.value.trim())) {
+            console.log(match[1] + " " + a[0] + " " + a[1])
+            map.set(i.toString(), a[1])
+            i++
+          }
         }
-      }
-        }else map = mapOrig
+      } else map = mapOrig
 
       console.log(map)
       page = 0
       renderPage()
     }
-    </script>
+  </script>
 </body>
 
 </html>

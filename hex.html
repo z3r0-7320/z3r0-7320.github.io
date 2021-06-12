@@ -1,57 +1,69 @@
 <!DOCTYPE html>
-<style>
-    body {
-        background-color: black;
-    }
-    p {
-
-        color: white;
-        font-family: sans-serif;
-        text-align: center;
-    }
-    input#color-pick{
-        width: 100%;
-        height: 500px;
-        border-radius: 5px;
-        border: 1px solid white;
-    }
-    #color-code{
-        width: 50%;
-        height: 50px;
-        font-size: 50px;
-        font-family: sans-serif;
-        text-align: center;
-        color: white;
-        background-color: transparent;
-        border-radius: 5px;
-        border:5px solid white;
-    }
-
-</style>
 <link rel="icon" href="z3r0.ico" type="image/x-icon" />
+
+<head>
+    <title>Color Picker</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        p {
+
+            color: white;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        input#color-pick {
+            width: 100%;
+            height: 500px;
+            border-radius: 5px;
+            border: 1px solid white;
+        }
+
+        #color-code {
+            width: 50%;
+            height: 50px;
+            font-size: 50px;
+            font-family: sans-serif;
+            text-align: center;
+            color: white;
+            background-color: transparent;
+            border-radius: 5px;
+            border: 5px solid white;
+        }
+    </style>
+</head>
+
+<link rel="icon" href="z3r0.ico" type="image/x-icon" />
+
 <body>
     <p style="font-size: 50px;">Color Picker</p>
     <div class="color-picker">
-        <input type="color" id = "color-pick"><p>click on the colored area above to change the color</p>
-        <div style="text-align: center;"><input type="text" id="color-code"></div><p>click on the color code to copy it</p>
+        <input type="color" id="color-pick">
+        <p>click on the colored area above to change the color</p>
+        <div style="text-align: center;"><input type="text" id="color-code"></div>
+        <p>click on the color code to copy it</p>
     </div>
 
     <script>
         var input = document.getElementById("color-pick");
         var colorCode = document.getElementById("color-code");
-        colorCode.addEventListener("click", function(){
+        colorCode.addEventListener("click", function () {
             colorCode.select();
             colorCode.setSelectionRange(0, 99999);
             document.execCommand("copy");
         });
-        input.addEventListener("input", function (){
+        input.addEventListener("input", function () {
             colorCode.value = input.value;
         });
-        function setColor(){
+        function setColor() {
             input.value = "#F15F50";
             colorCode.value = input.value;
         }
         setColor();
     </script>
 </body>
+
 </html>
