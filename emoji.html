@@ -194,7 +194,7 @@
     }
 
     function renderPageInput(r) {
-      if (!Number.isNaN(parseInt(r.value))) {
+      if (!Number.isNaN(parseInt(r.value)) && parseInt(r.value) > 0 && parseInt(r.value) - 1 < Math.ceil(map.size / elementssite)) {
         page = parseInt(r.value) - 1;
         renderPage()
       } else if (r.value !== '') {
