@@ -180,6 +180,7 @@
       input.value = e.childNodes[0].childNodes[0].alt;
       document.body.appendChild(input);
       input.select();
+      input.setSelectionRange(0, 99999);
       document.execCommand('Copy');
       document.body.removeChild(input);
     };
