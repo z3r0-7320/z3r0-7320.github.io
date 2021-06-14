@@ -11,10 +11,12 @@
     html,
     body {
       background-color: rgb(47, 49, 54);
+      margin: 0px;
     }
 
-    p.test {
-      margin-top: 0px;
+    div.test {
+      margin-top: 5px;
+      text-align: center;
     }
 
     div.gallery {
@@ -22,10 +24,9 @@
       text-align: center;
       width: 160px;
       height: 160px;
-      margin: 5px;
       border: none;
       border-radius: 4px;
-      float: left;
+      display: inline-block;
     }
 
     div.gallery img {
@@ -129,12 +130,15 @@
 
 <body>
   <div class="top"><input class="a" type="text" placeholder="Suchen" oninput="search(this)"></div>
-  <p class="test">
+  <div class="test"></div>
   <div class="bottom"><button type="button" onclick="previous()">&lt;</button><input class="b" type="text" id="page"
       oninput="renderPageInput(this)"><button type="button" onclick="next()">&gt;</button></div>
 
   <script>
+
     var pageInput = document.getElementById("page")
+    var wWidth = window.innerWidth
+    var wHeight = window.innerHeight
     function loadJSON(callback) {
       var xobj = new XMLHttpRequest();
       xobj.overrideMimeType("application/json");
@@ -157,7 +161,20 @@
         renderPage()
       });
     }
-    var elementssite = 100
+
+    var elerow = Math.floor(wWidth / 160)
+    var elementssite;
+    if(elerow <= 100) elementssite = Math.floor(100 / elerow) * elerow
+    else elementssite = 100
+
+    setTimeout(()=>{
+      wWidth = div[0].clientWidth
+      elerow = Math.floor(wWidth / 160)
+      if(elerow <= 100) elementssite = Math.floor(100 / elerow) * elerow
+      else elementssite = 100
+      renderPage()
+    }, 1000) 
+
     var page = 0
     var div = document.getElementsByClassName('test')
     var hi = elementssite;
@@ -182,7 +199,7 @@
       const input = document.createElement('input');
       input.style.position = 'fixed';
       input.style.opacity = 0;
-      input.value = e.childNodes[0].childNodes[0].alt;
+      input.value = e.childNodes[0].alt;
       document.body.appendChild(input);
       input.select();
       input.setSelectionRange(0, 99999);
@@ -192,9 +209,9 @@
 
     function renderPage() {
       pageInput.value = page + 1
-      var innerhtml = "";
+      var innerhtml = ""
       for (var i = elementssite * page; i <= Math.min(elementssite * (page + 1) - 1, map.size - 1); i++) {
-        innerhtml += `<div class="gallery" onclick="copy(this)"><p>${map.get(i.toString())}</p></div>`
+        innerhtml += `<div class="gallery" onclick="copy(this)">${map.get(i.toString())}</div>`
       }
       div[0].innerHTML = innerhtml
     }
@@ -225,6 +242,15 @@
       page = 0
       renderPage()
     }
+
+    window.addEventListener('resize', function() {
+      wWidth = div[0].clientWidth
+      wHeight = window.innerHeight
+      elerow = Math.floor(wWidth / 160)
+      if(elerow <= 100) elementssite = Math.floor(100 / elerow) * elerow
+      else elementssite = 100
+      renderPage()
+    }, true);
   </script>
 </body>
 
