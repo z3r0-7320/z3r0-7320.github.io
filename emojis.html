@@ -31,7 +31,6 @@
 
     div.gallery img {
       max-height: 100%;
-      max-width: 100%;
       width: 128px;
       height: auto;
       position: absolute;
@@ -137,8 +136,6 @@
   <script>
 
     var pageInput = document.getElementById("page")
-    var wWidth = window.innerWidth
-    var wHeight = window.innerHeight
     function loadJSON(callback) {
       var xobj = new XMLHttpRequest();
       xobj.overrideMimeType("application/json");
@@ -162,24 +159,10 @@
       });
     }
 
-    var elerow = Math.floor(wWidth / 160)
-    var elementssite;
-    if(elerow <= 100) elementssite = Math.floor(100 / elerow) * elerow
-    else elementssite = 100
-
-    setTimeout(()=>{
-      wWidth = div[0].clientWidth
-      elerow = Math.floor(wWidth / 160)
-      if(elerow <= 100) elementssite = Math.floor(100 / elerow) * elerow
-      else elementssite = 100
-      renderPage()
-    }, 1000) 
+    var elementssite = 100;
 
     var page = 0
     var div = document.getElementsByClassName('test')
-    var hi = elementssite;
-
-    init()
 
     function next() {
       if (page < Math.ceil(map.size / elementssite) - 1) {
@@ -242,15 +225,7 @@
       page = 0
       renderPage()
     }
-
-    window.addEventListener('resize', function() {
-      wWidth = div[0].clientWidth
-      wHeight = window.innerHeight
-      elerow = Math.floor(wWidth / 160)
-      if(elerow <= 100) elementssite = Math.floor(100 / elerow) * elerow
-      else elementssite = 100
-      renderPage()
-    }, true);
+    init()
   </script>
 </body>
 
