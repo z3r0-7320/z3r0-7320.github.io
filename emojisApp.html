@@ -191,6 +191,7 @@
       };
   
       function renderPage() {
+        window.scrollTo(0, 0);
         pageInput.value = page + 1
         var innerhtml = ""
         for (var i = elementssite * page; i <= Math.min(elementssite * (page + 1) - 1, map.size - 1); i++) {
