@@ -3,231 +3,232 @@
 <link rel="icon" href="z3r0.ico" type="image/x-icon" />
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emojis</title>
-  <style>
-    html,
-    body {
-      background-color: rgb(47, 49, 54);
-      margin: 0px;
-    }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <title>Emojis</title>
+    <style>
+        html,
+        body {
+            background-color: rgb(47, 49, 54);
+            margin: 0px;
+        }
 
-    div.test {
-      margin-top: 5px;
-      text-align: center;
-    }
+        div.test {
+            margin-top: 5px;
+            text-align: center;
+        }
 
-    div.gallery {
-      position: relative;
-      text-align: center;
-      width: 40px;
-      height: 40px;
-      border: none;
-      border-radius: 4px;
-      display: inline-block;
-    }
+        div.gallery {
+            position: relative;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 4px;
+            display: inline-block;
+        }
 
-    div.gallery img {
-      max-height: 100%;
-      width: 36px;
-      height: auto;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-    }
+        div.gallery img {
+            max-height: 100%;
+            width: 36px;
+            height: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
 
-    div.gallery img:active {
-      filter: grayscale(100%);
-    }
+        div.gallery img:active {
+            filter: grayscale(100%);
+        }
 
-    div.gallery:hover {
-      background-color: rgb(83, 83, 83);
-    }
+        div.gallery:hover {
+            background-color: rgb(83, 83, 83);
+        }
 
-    input:focus {
-      outline: none;
-    }
+        input:focus {
+            outline: none;
+        }
 
-    div.top {
-      margin-top: 20px;
-      text-align: center;
-      overflow: hidden;
-      position: relative;
-      top: 0;
-      width: 100%;
-    }
+        div.top {
+            margin-top: 20px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            top: 0;
+            width: 100%;
+        }
 
-    div.bottom {
-      text-align: center;
-      overflow: hidden;
-      position: relative;
-      bottom: 0;
-      width: 100%;
-    }
+        div.bottom {
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
 
-    input[type=text].a {
-      background-color: rgb(32, 34, 37);
-      border: none;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 16px;
-      color: rgb(255, 255, 255);
-      padding: 2px 16px;
-      width: 50%;
-      min-width: 300px;
-      height: 32px;
-      min-height: 32px;
-      cursor: text;
-    }
+        input[type=text].a {
+            background-color: rgb(32, 34, 37);
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 16px;
+            color: rgb(255, 255, 255);
+            padding: 2px 16px;
+            width: 50%;
+            min-width: 300px;
+            height: 32px;
+            min-height: 32px;
+            cursor: text;
+        }
 
-    input[type=text].b {
-      margin-left: 10px;
-      margin-right: 10px;
-      background-color: rgb(32, 34, 37);
-      border: none;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 16px;
-      color: rgb(255, 255, 255);
-      padding: 2px 16px;
-      width: 10px;
-      height: 32px;
-      min-width: 60px;
-      min-height: 32px;
-      cursor: text;
-      text-align: center;
-    }
+        input[type=text].b {
+            margin-left: 10px;
+            margin-right: 10px;
+            background-color: rgb(32, 34, 37);
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 16px;
+            color: rgb(255, 255, 255);
+            padding: 2px 16px;
+            width: 10px;
+            height: 32px;
+            min-width: 60px;
+            min-height: 32px;
+            cursor: text;
+            text-align: center;
+        }
 
-    button {
-      background-color: rgb(114, 137, 218);
-      border: none;
-      border-radius: 3px;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 16px;
-      color: rgb(255, 255, 255);
-      padding: 2px 16px;
-      width: auto;
-      height: 32px;
-      min-width: 60px;
-      min-height: 32px;
-      cursor: pointer;
-    }
+        button {
+            background-color: rgb(114, 137, 218);
+            border: none;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 16px;
+            color: rgb(255, 255, 255);
+            padding: 2px 16px;
+            width: auto;
+            height: 32px;
+            min-width: 60px;
+            min-height: 32px;
+            cursor: pointer;
+        }
 
-    button:hover {
-      background-color: rgb(92, 110, 177);
-    }
-  </style>
+        button:hover {
+            background-color: rgb(92, 110, 177);
+        }
+    </style>
 </head>
 
 <body>
     <div class="top"><input class="a" type="text" placeholder="Suchen" oninput="search(this)"></div>
     <div class="test"></div>
     <div class="bottom"><button type="button" onclick="previous()">&lt;</button><input class="b" type="text" id="page"
-        oninput="renderPageInput(this)"><button type="button" onclick="next()">&gt;</button></div>
-  
+            oninput="renderPageInput(this)"><button type="button" onclick="next()">&gt;</button></div>
+
     <script>
-  
-      var pageInput = document.getElementById("page")
-      function loadJSON(callback) {
-        var xobj = new XMLHttpRequest();
-        xobj.overrideMimeType("application/json");
-        xobj.open('GET', 'html.json', true);
-        xobj.onreadystatechange = function () {
-          if (xobj.readyState == 4 && xobj.status == "200") {
-            callback(xobj.responseText);
-          }
-        };
-        xobj.send(null);
-      }
-      var actual_JSON
-      var mapOrig = new Map();
-      var map = new Map();
-      function init() {
-        loadJSON(function (response) {
-          actual_JSON = JSON.parse(response);
-          mapOrig = new Map(Object.entries(actual_JSON.map));
-          map = mapOrig
-          renderPage()
-        });
-      }
-  
-      var elementssite = 100;
-  
-      var page = 0
-      var div = document.getElementsByClassName('test')
-  
-      function next() {
-        if (page < Math.ceil(map.size / elementssite) - 1) {
-          page++
-          renderPage()
+
+        var pageInput = document.getElementById("page")
+        function loadJSON(callback) {
+            var xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', 'html.json', true);
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState == 4 && xobj.status == "200") {
+                    callback(xobj.responseText);
+                }
+            };
+            xobj.send(null);
         }
-      }
-  
-      function previous() {
-        if (page > 0) {
-          page--
-          renderPage()
+        var actual_JSON
+        var mapOrig = new Map();
+        var map = new Map();
+        function init() {
+            loadJSON(function (response) {
+                actual_JSON = JSON.parse(response);
+                mapOrig = new Map(Object.entries(actual_JSON.map));
+                map = mapOrig
+                renderPage()
+            });
         }
-      }
-  
-      function copy(e) {
-        const input = document.createElement('input');
-        input.style.position = 'fixed';
-        input.style.opacity = 0;
-        input.value = e.childNodes[0].alt;
-        document.body.appendChild(input);
-        input.select();
-        input.setSelectionRange(0, 99999);
-        document.execCommand('Copy');
-        document.body.removeChild(input);
-      };
-  
-      function renderPage() {
-        window.scrollTo(0, 0);
-        pageInput.value = page + 1
-        var innerhtml = ""
-        for (var i = elementssite * page; i <= Math.min(elementssite * (page + 1) - 1, map.size - 1); i++) {
-          innerhtml += `<div class="gallery" onclick="copy(this)">${map.get(i.toString())}</div>`
-        }
-        div[0].innerHTML = innerhtml
-      }
-  
-      function renderPageInput(r) {
-        if (!Number.isNaN(parseInt(r.value)) && parseInt(r.value) > 0 && parseInt(r.value) - 1 < Math.ceil(map.size / elementssite)) {
-          page = parseInt(r.value) - 1;
-          renderPage()
-        } else if (r.value !== '') {
-          r.value = page + 1
-        }
-      }
-  
-      function search(e) {
-        if (e.value.trim() !== '') {
-          map = new Map()
-          var i = 0
-          for (var a of mapOrig) {
-            var myRegexp = /<img src=\S* id="(\S*)"/g
-            var match = myRegexp.exec(a);
-            if (match[1].includes(e.value.toLowerCase().trim())) {
-              map.set(i.toString(), a[1])
-              i++
+
+        var elementssite = 100;
+
+        var page = 0
+        var div = document.getElementsByClassName('test')
+
+        function next() {
+            if (page < Math.ceil(map.size / elementssite) - 1) {
+                page++
+                renderPage()
             }
-          }
-        } else map = mapOrig
-  
-        page = 0
-        renderPage()
-      }
-      init()
+        }
+        function previous() {
+            if (page > 0) {
+                page--
+                renderPage()
+            }
+        }
+
+        function copy(e) {
+            const input = document.createElement('input');
+            input.style.position = 'fixed';
+            input.style.opacity = 0;
+            input.value = e.childNodes[0].alt;
+            document.body.appendChild(input);
+            input.select();
+            input.setSelectionRange(0, 99999);
+            document.execCommand('Copy');
+            document.body.removeChild(input);
+        };
+
+        function renderPage() {
+            window.scrollTo(0, 0);
+            pageInput.value = page + 1
+            var innerhtml = ""
+            for (var i = elementssite * page; i <= Math.min(elementssite * (page + 1) - 1, map.size - 1); i++) {
+                var temp = map.get(i.toString())
+                innerhtml += `<div class="gallery" onclick="copy(this)"><img src="https://cdn.discordapp.com/emojis/${temp[1]}?size=32" alt=":${temp[0]}:" height="128px"></div>`
+            }
+            div[0].innerHTML = innerhtml
+        }
+
+        function renderPageInput(r) {
+            if (!Number.isNaN(parseInt(r.value)) && parseInt(r.value) > 0 && parseInt(r.value) - 1 < Math.ceil(map.size / elementssite)) {
+                page = parseInt(r.value) - 1;
+                renderPage()
+            } else if (r.value !== '') {
+                r.value = page + 1
+            }
+        }
+
+        function search(e) {
+            if (e.value.trim() !== '') {
+                map = new Map()
+                var i = 0
+                for (var a of mapOrig) {
+                    if (a[1][0].toLowerCase().includes(e.value.replace(/:/g, "").toLowerCase().trim()) || a[1][1].toLowerCase() === e.value.replace(/:/g, "").replace("a", "").toLowerCase().trim()) {
+                        map.set(i.toString(), a[1])
+                        i++
+                    }
+                }
+            } else map = mapOrig
+
+            page = 0
+            renderPage()
+        }
+        init()
     </script>
-  </body>
-  
-  </html>
+</body>
+
+</html>
